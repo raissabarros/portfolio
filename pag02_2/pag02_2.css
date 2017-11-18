@@ -17,7 +17,8 @@
     cursor:pointer;
     text-align:center;
     /*font-family: 'Courgette', cursive;*/
-	 font-family: 'Ostrich Sans Medium', arial;
+	 /* font-family: 'Ostrich Sans Medium', arial; */
+	font-family: 'Poppins';
 	font-size: 20px;
     color:#fff;
 }
@@ -41,7 +42,8 @@
 
 #listagemAtiv tr th{
     /* font-family: Arial, Verdana, sans-serif;*/
-	font-family: 'Ostrich Sans Medium', arial;
+	/* font-family: 'Ostrich Sans Medium', arial; */
+	font-family: 'Poppins';
 
 }
 
@@ -50,6 +52,7 @@
 	font-weight:bold;
 	font-size:18px;
 	color:#fff;
+	font-family: 'Poppins';
 }
 
 #listagemAtiv tr td a:hover{ /* link muda de cor ao passar o mouse */
@@ -67,7 +70,8 @@
 }
 
 h1{
-    font-family: 'Courgette', cursive;
+    /* font-family: 'Courgette', cursive; */
+	font-family: 'Poppins';
 }
 
 
@@ -77,7 +81,8 @@ h1{
 
 #listagemTrab tr th{
     /* font-family: Arial, Verdana, sans-serif; */
-	font-family: 'Ostrich Sans Medium', arial;
+	/* font-family: 'Ostrich Sans Medium', arial; */
+	font-family: 'Poppins';
 }
 
 #listagemTrab tr td a{
@@ -85,6 +90,7 @@ h1{
     font-weight:bold;
     font-size:18px;
     color: #fff;
+	font-family: 'Poppins';
 
 #listagemTrab tr td a:hover{ /* link muda de cor ao passar o mouse */
     color: lightskyblue;
