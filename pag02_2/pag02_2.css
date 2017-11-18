@@ -16,7 +16,8 @@
     flex-grow:1;
     cursor:pointer;
     text-align:center;
-    font-family: 'Courgette', cursive;
+    /*font-family: 'Courgette', cursive;*/
+	 font-family: 'Ostrich Sans Medium', arial;
 	font-size: 20px;
     color:#fff;
 }
