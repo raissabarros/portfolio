@@ -16,7 +16,7 @@
     flex-grow:1;
     cursor:pointer;
     text-align:center;
-    font-family:"Times New Roman", Georgia, Serif;
+    font-family: 'Courgette', cursive;
 	font-size: 20px;
     color:#fff;
 }
@@ -34,23 +34,23 @@
     display:flex;
 }
 
-.listagem{
+#listagemAtiv {
 	color:#fff;
 }
 
-.listagem tr th{
+#listagemAtiv tr th{
     font-family: Arial, Verdana, sans-serif;
 }
 
-.listagem tr td a{
+#listagemAtiv tr td a{
 	text-decoration:none;
 	font-weight:bold;
 	font-size:18px;
 	color:#fff;
 }
 
-.listagem tr td a:hover{ /* link muda de cor ao passar o mouse */
-	color:#ccc;
+#listagemAtiv tr td a:hover{ /* link muda de cor ao passar o mouse */
+	color: greenyellow;
 }
 
 #idAtiv{ /*faz parte do bloco*/
@@ -61,4 +61,27 @@
 }
 #idSobre{
     background-color:#faa;
+}
+
+h1{
+    font-family: 'Courgette', cursive;
+}
+
+
+#listagemTrab {
+    color:#fff;
+}
+
+#listagemTrab tr th{
+    font-family: Arial, Verdana, sans-serif;
+}
+
+#listagemTrab tr td a{
+    text-decoration:none;
+    font-weight:bold;
+    font-size:18px;
+    color: #fff;
+
+#listagemTrab tr td a:hover{ /* link muda de cor ao passar o mouse */
+    color: lightskyblue;
 }
