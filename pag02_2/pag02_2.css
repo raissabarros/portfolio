@@ -40,7 +40,9 @@
 }
 
 #listagemAtiv tr th{
-    font-family: Arial, Verdana, sans-serif;
+    /* font-family: Arial, Verdana, sans-serif;*/
+	font-family: 'Ostrich Sans Medium', arial;
+
 }
 
 #listagemAtiv tr td a{
@@ -74,7 +76,8 @@ h1{
 }
 
 #listagemTrab tr th{
-    font-family: Arial, Verdana, sans-serif;
+    /* font-family: Arial, Verdana, sans-serif; */
+	font-family: 'Ostrich Sans Medium', arial;
 }
 
 #listagemTrab tr td a{
