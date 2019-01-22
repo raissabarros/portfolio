@@ -90,7 +90,8 @@ h1{
     font-weight:bold;
     font-size:18px;
     color: #fff;
-	font-family: 'Raleway';
+    font-family: 'Raleway';
+}
 
 #listagemTrab tr td a:hover{ /* link muda de cor ao passar o mouse */
     color: lightskyblue;
