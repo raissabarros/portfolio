@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Mali" rel="stylesheet">
+    <title>Trabalho 02</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Mali');
+
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    .divzona{
+        margin: auto;
+        
+        width: 900px;
+        height: 100vh;
+    }
+
+    .header{
+        height: 50px;
+        background-color: aquamarine;
+        padding: 10px;
+       /* box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.3);*/
+       /* border: 0 0 2px 0 solid;*/
+        /*z-index: 2;*/
+    }
+
+    .titulo {
+        padding: 10px;
+        font-size: 20px;
+        font-family: 'Mali', cursive;
+        display: block;
+        float: left;
+    }
+
+    .titulo-conversa{
+        left: 50%;
+        top: 25px;
+        transform: translate(-50%, 0);
+        position: absolute;
+        font-family: 'Mali', cursive;
+        font-size: 16px;
+
+    }
+
+    .entrar {
+        background-color:pink;
+        padding: 5px;
+        border-radius: 5px;
+        font-family: 'Mali', cursive;
+        cursor: pointer;
+        float: right;
+        margin: 10px;
+
+    }
+
+    .contatos{
+        width: 30%;
+        height: 90vh;
+        background-color: rgb(152, 222, 255);
+        display: block;
+        float: left;
+        font-family: 'Mali', cursive;
+        font-size: 16px;
+    }
+
+    .chat {
+        width: 70%;
+        height: 90vh;
+        background-color: pink;
+        display: block;
+        float: left;
+    }
+
+    .contatos ul{
+        list-style-type: none;
+        /*
+        padding: 10px;
+        cursor: pointer;*/
+    }
+
+    .mensagem {
+        padding: 10px;
+    }
+
+    /* classes criadas no JS */
+
+    .li-lista{
+        padding: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    .li-lista:hover{
+        background-color:rgb(255, 218, 6);
+
+    }
+
+    .img-contatinho{
+        height: 40px;
+        padding-right: 5px;
+    }
+
+    p{
+        padding: 5px;
+    }
+
+
+</style>
+<body>
+    <div class="divzona">
+        <div class="header">
+            <div class="titulo">
+                TeleHAM 🐹
+            </div>
+            <button class="entrar"> Entrar </button>
+            <div class="titulo-conversa">
+               <!-- nome do grupo -->
+            </div>
+            
+
+        </div>
+        <div class="contatos">
+            <ul class="lista-contatinhos">
+                <!-- 
+                <li>
+                    gupo 1
+                </li>
+                <li>
+                   grupo 2
+                </li>
+            -->
+            </ul>
+        </div>
+
+        
+        <div class="chat">
+            
+            <div class="mensagem">
+               <!-- msg 1 -->
+            </div>
+
+        </div>
+
+
+    </div>
+    
+    <script>
+        let lista_gruposEmensagens = [
+            {
+                grupo: "Grupo da família",
+                mensagens: [
+                        {
+                                usuario: "joao03",
+                                texto: "Tudo bem?"
+                        },
+                        {
+                                usuario: "victor23",
+                                texto: "Tudo Tranqs"
+                        },
+                        {
+                                usuario: "joao03",
+                                texto: "Que bom"
+                        },
+                ]
+            },
+            { 
+                grupo: "Churrascão no domingão",
+                mensagens: [
+                        {
+                                usuario: "maria2000",
+                                texto: "Na paz?"
+                        },
+                        {
+                                usuario: "victor23",
+                                texto: "Show"
+                        },
+                        {
+                                usuario: "maria2000",
+                                texto: "Que bom"
+                        },
+                ]
+            },
+            { 
+                grupo: "Só topzera",
+                mensagens: [
+                        {
+                                usuario: "victor03",
+                                texto: "Bom?"
+                        },
+                        {
+                                usuario: "robson_alves",
+                                texto: "Bom"
+                        },
+                        {
+                                usuario: "victor03",
+                                texto: "Que bom"
+                        },
+                ]
+            }
+        ];
+            
+        let lista_grupos = document.querySelector(".lista-contatinhos");
+
+        for(let i=0; i<lista_gruposEmensagens.length; i++){
+            let img_contato = document.createElement("img");
+            img_contato.setAttribute("src","./imagens/ham2.png");
+            img_contato.classList.add("img-contatinho");
+            
+            let li = document.createElement("li");
+            li.classList.add("li-lista");
+            
+            let nome_grupo = document.createTextNode(lista_gruposEmensagens[i].grupo);
+            
+            li.appendChild(img_contato);
+            li.appendChild(nome_grupo);
+            lista_grupos.appendChild(li);
+
+        }
+
+        let conversa_ativa = document.querySelector(".titulo-conversa");
+        let itens_grupos = document.querySelectorAll(".li-lista");
+        let mensagens = document.querySelector(".mensagem");
+
+        for (let i=0; i<itens_grupos.length; i++){
+            itens_grupos[i].addEventListener("click", function(){
+                console.log(lista_gruposEmensagens[i].grupo);
+
+                conversa_ativa.innerHTML = lista_gruposEmensagens[i].grupo;
+                
+                mensagens.innerHTML="";
+
+                for (let j=0; j < lista_gruposEmensagens[i].mensagens.length; j++){
+                    let paragrafo = document.createElement("p");
+                    
+                    paragrafo.innerHTML = lista_gruposEmensagens[i].mensagens[j].usuario + ":<br>" + lista_gruposEmensagens[i].mensagens[j].texto;
+
+                    mensagens.appendChild(paragrafo);
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>

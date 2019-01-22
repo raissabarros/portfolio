@@ -1,0 +1,93 @@
+{
+  "groups": [
+    {
+      "id": "1",
+      "groupName": "Grupo da Família",
+      "groupID": "grupofamilia"
+    },
+    {
+      "id": "2",
+      "groupName": "Help LMS",
+      "groupID": "helplms"
+    },
+    {
+      "id": "3",
+      "groupName": "Ratas",
+      "groupID": "ratasufc"
+    },
+    {
+      "groupName": "another one bites the dust",
+      "groupID": "anotherone",
+      "id": "Mx9wRDi"
+    }
+  ],
+  "grupofamilia": [
+    {
+      "id": "1",
+      "userName": "Mamãe",
+      "message": "Bom dia!"
+    },
+    {
+      "id": "2",
+      "userName": "Dalva",
+      "message": "Bom dia! Hoje tem bife!"
+    },
+    {
+      "userName": "Raíssa",
+      "message": "Bom dia! Quero",
+      "id": "ZPUshQ3"
+    }
+  ],
+  "helplms": [
+    {
+      "id": "1",
+      "userName": "Raíssa",
+      "message": "Esse learncode não dá certo"
+    },
+    {
+      "id": "2",
+      "userName": "Mary",
+      "message": "Deus me dibre"
+    },
+    {
+      "id": "3",
+      "userName": "Edney",
+      "message": "Socorro"
+    },
+    {
+      "userName": "Babey",
+      "message": "help",
+      "id": "M9X5xr8"
+    }
+  ],
+  "ratasufc": [
+    {
+      "id": "1",
+      "userName": "Raíssa",
+      "message": "Cabaré das Ratas nessa sexta, tragam comidinhas"
+    },
+    {
+      "id": "2",
+      "userName": "Johnathan",
+      "message": "Obaaa! Eu vou!"
+    },
+    {
+      "id": "3",
+      "userName": "Jeff",
+      "message": "Preciso!"
+    },
+    {
+      "userName": "Raíssa",
+      "message": "vai ser top!",
+      "id": "Zj3g4ua"
+    }
+  ],
+  "postits": [
+    {
+      "title": "LMS",
+      "text": "Resolver prova 2017",
+      "id": 1
+    }
+  ],
+  "postits2": []
+}

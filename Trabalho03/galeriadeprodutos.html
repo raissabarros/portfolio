@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <title>Galeria de Produtos - Trabalo 03</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+    @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
+    .jumbotron {
+        background-image: linear-gradient(90deg, midnightblue, mediumvioletred);
+
+    }
+
+    .jumbotron h1 {
+        font-family: 'Cabin Sketch', cursive;
+        color: white;
+    }
+
+    .jumbotron h3 {
+        font-family: 'Amatic SC', cursive;
+        color: white;
+    }
+
+    .col-md-4 {
+        text-align: center;
+        height: 300px;
+    }
+
+    .foto-produto {
+        width: 150px;
+        height: 150px;
+    }
+
+    .col-md-4 {
+        text-align: center;
+    }
+
+    .preco {
+        color: mediumvioletred;
+    }
+
+    .padding-nav {
+        padding: 8px;
+    }
+
+    .dropdown-menu {
+        padding: 10px;
+    }
+
+    .dropdown,
+    .sair {
+        padding: 7px;
+    }
+
+    .carrinho .dropdown-menu {
+        width: 200px;
+    }
+
+    #listaProdutosCarrinho {
+        list-style-type: none;
+    }
+
+    #listaProdutosCarrinho li {
+        margin: 20px 0;
+    }
+
+    .qtdAddProduto {
+        width: 60px;
+    }
+
+    .combobox select {
+        margin-left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h1> Universiusados</h1>
+            <h3> Sua loja universitária de materiais usados</h3>
+        </div>
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#">Todos os produtos</a>
+                </li>
+                <li>
+                    <a href="#">Material de desenho</a>
+                </li>
+                <li>
+                    <a href="#">Material de Design Digital</a>
+                </li>
+                <li>
+                    <a href="#">Acessórios</a>
+                </li>
+                <li class="carrinho dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownCarrinhoButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <span class="glyphicon glyphicon-shopping-cart dropdown-toggle"></span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <ul id="listaProdutosCarrinho">
+
+                        </ul>
+                        <hr>
+                        <div>
+                            <button class="btn btn-success" id="finalizarCompraButton">Finalizar</button>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownEntrarButton" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Entrar
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item">Faça login</div>
+                            <form>
+
+                                <div class="form-group">
+                                    <p>
+                                        <strong>Usuário</strong>
+                                    </p>
+                                    <input type="usuario" id="form-entrar-usuario" placeholder="Digite seu usuário">
+                                </div>
+                                <div class="form-group">
+                                    <p>
+                                        <strong>Senha</strong>
+                                    </p>
+                                    <input type="password" id="form-entrar-senha" placeholder="Digite sua senha">
+                                </div>
+                                <button type="submit" class="btn btn-success" id="form-entrar-botao">Entrar</button>
+                                <div>
+
+                                </div>
+                        </div>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownCadastrarButton" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Cadastre-se
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item">Faça seu cadastro</div>
+                            <form>
+
+                                <div class="form-group">
+                                    <p>
+                                        <strong>Usuário</strong>
+                                    </p>
+                                    <input type="usuario" id="form-cadastrar-usuario" placeholder="Digite seu usuário">
+                                </div>
+                                <div class="form-group">
+                                    <p>
+                                        <strong>Senha</strong>
+                                    </p>
+                                    <input type="password" id="form-cadastrar-senha" placeholder="Digite sua senha">
+                                </div>
+                                <button type="submit" class="btn btn-success" id="form-cadastrar-botao">Cadastrar</button>
+                                <div>
+
+                                </div>
+                        </div>
+                </li>
+                <li class="sair">
+                    <button type="button" class="btn btn-primary">Sair</button>
+                </li>
+                <!--
+                    <li>
+                    <button type="button" class="btn btn-primary btn-info btn-lg" data-toggle="modal" data-target="#myModal">Entrar</button>
+                </li>
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Faça login ou cadastre-se</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div>
+                                        <p>Login</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">E-mail</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu e-mail">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Senha</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Digite sua senha">
+                                    </div>
+                                    <button type="submit" class="btn btn-success" id="logar">Entrar</button>
+                                    <div>
+                                        <br>
+                                        <p>Ainda não é cadastrado? Cadastre-se agora! </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">E-mail</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Cadastre um e-mail">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Senha</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Cadastre uma senha">
+                                    </div>
+                                    <button type="submit" class="btn btn-success" id="cadastrar">Cadastrar-se</button>
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn default" data-dismiss="modal"> Fechar</button>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div> -->
+                </div>
+            </ul>
+            </div>
+
+        </nav>
+        <div class="container-fluid gallery">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="./imagens/p01.jpg" class="foto-produto">
+                    <div>
+                        <p>Caneta Unipin 0.6</p>
+                    </div>
+                    <div class="preco">
+                        <p>R$ 8,00</p>
+                    </div>
+                    <div class="combobox">
+                        <select class="form-control qtdAddProduto">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+
+
+                        </select>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary addProdutoButton"> Adicionar </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="./imagens/p02.jpg" class="foto-produto">
+                    <div>
+                        <p>Escalímetro</p>
+                    </div>
+                    <div class="preco">
+                        <p>R$ 12,00</p>
+                    </div>
+                    <div class="combobox">
+                        <select class="form-control qtdAddProduto">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+
+
+                        </select>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary addProdutoButton"> Adicionar </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="./imagens/p03.jpg" class="foto-produto">
+                    <div>
+                        <p>Mesa digitalizadora Wacon</p>
+                    </div>
+                    <div class="preco">
+                        <p>R$ 150,00</p>
+                    </div>
+                    <div class="combobox">
+                        <select class="form-control qtdAddProduto">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+
+
+                        </select>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary addProdutoButton"> Adicionar </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="./imagens/p04.jpg" class="foto-produto">
+                    <div>
+                        <p>Kit aquarela pastilhas</p>
+                        <div class="preco">
+                            <p>R$ 8,00</p>
+                        </div>
+                        <div class="combobox">
+                            <select class="form-control qtdAddProduto">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+
+
+                            </select>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary addProdutoButton"> Adicionar </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="./imagens/p05.jpg" class="foto-produto">
+                    <div>
+                        <p>Mouse sem fio</p>
+                        <div class="preco">
+                            <p>R$ 20,00</p>
+                        </div>
+                        <div class="combobox">
+                            <select class="form-control qtdAddProduto">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+
+
+                            </select>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary addProdutoButton"> Adicionar </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="./imagens/p06.jpg" class="foto-produto">
+                    <div>
+                        <p>Case notebook Flash</p>
+                        <div class="preco">
+                            <p>R$ 15,00</p>
+                        </div>
+                        <div class="combobox">
+                            <select class="form-control qtdAddProduto">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+
+
+                            </select>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary addProdutoButton"> Adicionar </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <ul class="pagination">
+                        <li class="active">
+                            <a href="">1</a>
+                        </li>
+                        <li>
+                            <a href="">2</a>
+                        </li>
+                        <li>
+                            <a href="">3</a>
+                        </li>
+                        <li>
+                            <a href="">4</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $.ajaxSetup({
+            xhrFields: {
+                withCredentials: true //necessário para o rem-rest-api aceitar
+            }
+        });
+        
+        $("#finalizarCompraButton").click(function(e){
+            e.preventDefault();
+            window.location.href = "./suascompras.html";
+        });
+
+        var produtos_info = [
+            {
+                img: "./imagens/p01.jpg",
+                nome: "Caneta Unipin 0.6",
+                preco: 8
+            },
+            {
+                img: "./imagens/p02.jpg",
+                nome: "Escalímetro",
+                preco: 12
+            },
+            {
+                img: "./imagens/p03.jpg",
+                nome: "Mesa Digitalizadora Wacon",
+                preco: 150
+            },
+            {
+                img: "./imagens/p04.jpg",
+                nome: "Kit aquarela pastilhas",
+                preco: 8
+            },
+            {
+                img: "./imagens/p05.jpg",
+                nome: "Mouse sem fio",
+                preco: 20
+            },
+            {
+                img: "./imagens/p06.jpg",
+                nome: "Case notebook Flash",
+                preco: 15
+            }
+        ];
+
+        let lista_carrinho = [];
+
+        function getCarrinho() {
+            if (localStorage.getItem("listacarrinho") !== null) {
+                lista_carrinho = JSON.parse(localStorage.getItem("listacarrinho"));
+            }
+        }
+        getCarrinho();
+
+        let ul_carrinho = $("#listaProdutosCarrinho");
+        function listarProdutosCarrinho() {
+            getCarrinho();
+            ul_carrinho.empty();
+            for (let i = 0; i < lista_carrinho.length; i++) {
+                let listitem = $("<li></li>");
+                let texto = lista_carrinho[i].nome + "<br>" + lista_carrinho[i].qtde + " unidade(s) <br> Total: R$ " + lista_carrinho[i].total;
+                listitem.append(texto);
+                ul_carrinho.append(listitem);
+            }
+            if (lista_carrinho.length == 0) {
+                ul_carrinho.parent().prepend("Carrinho vazio!");
+                $("#finalizarCompraButton").remove();
+            }
+        }
+        listarProdutosCarrinho();
+
+        let qtd_produtos = $(".qtdAddProduto");
+        let botoes_adicionar = $(".addProdutoButton");
+
+        for (let i = 0; i < qtd_produtos.length; i++) {
+            botoes_adicionar[i].addEventListener("click", function (e) {
+                e.preventDefault();
+                let dados = {
+                    img: produtos_info[i].img,
+                    nome: produtos_info[i].nome,
+                    qtde: qtd_produtos[i].value,
+                    total: qtd_produtos[i].value * produtos_info[i].preco
+                };
+                lista_carrinho.push(dados);
+                localStorage.setItem("listacarrinho",JSON.stringify(lista_carrinho));
+                location.reload();
+            });
+        }
+
+        function checarUsuarioLogado() {
+            if (localStorage.getItem("usuariologado") !== null) {
+                console.log("tem usuario logado");
+                $("#dropdownEntrarButton").remove();
+                $("#dropdownCadastrarButton").remove();
+            }
+            else {
+                console.log("não tem usuario logado");
+                for (let i = 0; i < qtd_produtos.length; i++) {
+                    qtd_produtos[i].remove();
+                    botoes_adicionar[i].remove();
+                }
+                $(".carrinho").remove();
+                $(".sair").remove();
+            }
+        }
+        checarUsuarioLogado();
+
+        let lista_usuarios;
+        function getUsuarios() {
+            $.ajax({
+                type: "GET",
+                url: "http://rem-rest-api.herokuapp.com/api/raissausuarios",
+                success: function (data) {
+                    lista_usuarios = data.data;
+                }
+            });
+        }
+        getUsuarios();
+
+        $(".sair").click(function () {
+            localStorage.removeItem("usuariologado");
+            location.reload();
+        });
+
+        $("#form-entrar-botao").click(function (e) {
+            e.preventDefault();
+            if ($("#form-entrar-usuario").val() == "") {
+                window.alert("Preencha com seu usuário");
+            }
+            else if ($("#form-entrar-senha").val() == "") {
+                window.alert("Preencha com sua senha");
+            }
+            else {
+                for (let i = 0; i < lista_usuarios.length; i++) {
+                    if ($("#form-entrar-usuario").val() == lista_usuarios[i].usuario && $("#form-entrar-senha").val() == lista_usuarios[i].senha) {
+                        /* LOGAR USUARIO */
+                        localStorage.setItem("usuariologado", lista_usuarios[i].id);
+                        location.reload();
+                        return;
+                    }
+                }
+                window.alert("Usuário ou senha inválidos!");
+            }
+        });
+
+        $("#form-cadastrar-botao").click(function (e) {
+            e.preventDefault();
+            if ($("#form-cadastrar-usuario").val() == "") {
+                window.alert("Cadastre um usuário");
+            }
+            else if ($("#form-cadastrar-senha").val() == "") {
+                window.alert("Cadastre uma senha");
+            }
+            else {
+                for (let i = 0; i < lista_usuarios.length; i++) {
+                    if ($("#form-cadastrar-usuario").val() == lista_usuarios[i].usuario) {
+                        window.alert("Já existe um usuário com esse nome!");
+                        return;
+                    }
+                }
+                let dados = {
+                    usuario: $("#form-cadastrar-usuario").val(),
+                    senha: $("#form-cadastrar-senha").val()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "http://rem-rest-api.herokuapp.com/api/raissausuarios",
+                    data: JSON.stringify(dados),
+                    success: function (data) {
+                        window.alert("Usuário cadastrado com sucesso!");
+                        $("#form-cadastrar-usuario").val("");
+                        $("#form-cadastrar-senha").val("");
+                        getUsuarios();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

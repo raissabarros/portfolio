@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <title>Galeria de Produtos - Trabalo 03</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+    @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
+    .jumbotron {
+        background-image: linear-gradient(90deg, midnightblue, mediumvioletred);
+
+    }
+
+    .jumbotron h1 {
+        font-family: 'Cabin Sketch', cursive;
+        color: white;
+    }
+
+    .jumbotron h3 {
+        font-family: 'Amatic SC', cursive;
+        color: white;
+    }
+
+    .carrinho {
+        color: mediumvioletred;
+        font-size: 25px;
+        top: 5px;
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    .carrinho:hover>.dropdown-menu {
+        display: block;
+    }
+
+    .col-md-4 {
+        text-align: center;
+        height: 300px;
+    }
+
+    .foto-produto {
+        width: 150px;
+        height: 150px;
+    }
+
+    .col-md-4 {
+        text-align: center;
+    }
+
+    .preco {
+        color: mediumvioletred;
+    }
+
+    .padding-nav {
+        padding: 8px;
+    }
+
+    .dropdown-menu {
+        padding: 10px;
+    }
+
+    .dropdown,
+    .voltar,
+    .finalizar {
+        padding: 7px;
+    }
+
+    .lista-carrinho {
+        text-align: center;
+    }
+
+    .compras-feitas {
+        text-align: center;
+    }
+
+    .teste {
+        float: right;
+        margin-right: 50px;
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h1> Universiusados</h1>
+            <h3> Sua loja universitária de materiais usados</h3>
+        </div>
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#">Todos os produtos</a>
+                </li>
+                <li>
+                    <a href="#">Material de desenho</a>
+                </li>
+                <li>
+                    <a href="#">Material de Design Digital</a>
+                </li>
+                <li>
+                    <a href="#">Acessórios</a>
+                </li>
+                <li class="voltar">
+                    <button type="button" class="btn btn-primary">Voltar</button>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container-fluid lista-carrinho">
+        <!-- produtos -->
+    </div>
+
+    <div class="teste">
+        <div>
+            <strong>
+                Valor final
+            </strong>
+            <p class="valor-final">
+            </p>
+        </div>
+        <div class="finalizar">
+            <button type="button" class="btn btn-success" id="botao-final">Finalizar compra</button>
+        </div>
+    </div>
+
+    <div class="compras-feitas">
+        <h4>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br> Compras feitas
+        </h4>
+    </div>
+
+    <div class="container-fluid compras-anteriores">
+        <!-- compras efetuadas -->
+    </div>
+
+
+
+    <script>
+        $.ajaxSetup({
+            xhrFields: {
+                withCredentials: true //necessário para o rem-rest-api aceitar
+            }
+        });
+
+        let galeria = $("galery");
+
+        var produtos_info = [
+            {
+                img: "./imagens/p01.jpg",
+                nome: "Caneta Unipin 0.6",
+                preco: 8
+            },
+            {
+                img: "./imagens/p02.jpg",
+                nome: "Escalímetro",
+                preco: 12
+            },
+            {
+                img: "./imagens/p03.jpg",
+                nome: "Mesa Digitalizadora Wacon",
+                preco: 150
+            },
+            {
+                img: "./imagens/p04.jpg",
+                nome: "Kit aquarela pastilhas",
+                preco: 8
+            },
+            {
+                img: "./imagens/p05.jpg",
+                nome: "Mouse sem fio",
+                preco: 20
+            },
+            {
+                img: "./imagens/p06.jpg",
+                nome: "Case notebook Flash",
+                preco: 15
+            }
+        ];
+
+        let lista_carrinho = [];
+
+        function getCarrinho() {
+            if (localStorage.getItem("listacarrinho") !== null) {
+                lista_carrinho = JSON.parse(localStorage.getItem("listacarrinho"));
+            }
+        }
+        getCarrinho();
+
+        function carregaProdutos() {
+            let soma = 0;
+            for (let i = 0; i < lista_carrinho.length; i++) {
+                soma = soma + lista_carrinho[i].total;
+
+                let row = $("<div></div>");
+                row.addClass("row");
+
+                let div_img = $("<div></div>");
+                div_img.addClass("col-md-3");
+                let img = $("<img></img>");
+                img.addClass("foto-produto");
+                img.attr("src", lista_carrinho[i].img);
+                div_img.append(img);
+
+                let div_nome = $("<div></div>");
+                div_nome.addClass("col-md-3");
+                let titulo_nome = $("<h5></h5>");
+                titulo_nome.append("<strong>Produto</strong>");
+                let nome = $("<p></p>");
+                nome.append(lista_carrinho[i].nome);
+                div_nome.append(titulo_nome);
+                div_nome.append(nome);
+
+                let div_qtde = $("<div></div>");
+                div_qtde.addClass("col-md-3");
+                let titulo_qtde = $("<h5></h5>");
+                titulo_qtde.append("<strong>Quantidade</strong>");
+                let qtde = $("<p></p>");
+                qtde.append(lista_carrinho[i].qtde);
+                div_qtde.append(titulo_qtde);
+                div_qtde.append(qtde);
+
+                let div_total = $("<div></div>");
+                div_total.addClass("col-md-3");
+                let titulo_total = $("<h5></h5>");
+                titulo_total.append("<strong>Total</strong>");
+                let total = $("<p></p>");
+                total.append(lista_carrinho[i].total);
+                div_total.append(titulo_total);
+                div_total.append(total);
+
+                row.append(div_img);
+                row.append(div_nome);
+                row.append(div_qtde);
+                row.append(div_total);
+
+                $(".lista-carrinho").append(row);
+                $(".lista-carrinho").append("<hr>");
+            }
+            $(".valor-final").append(soma);
+        }
+        carregaProdutos();
+
+        $("#botao-final").click(function (e) {
+            e.preventDefault();
+            let dt = new Date();
+            let data = dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear();
+            let hora = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+            let soma = 0;
+            for (let i = 0; i < lista_carrinho.length; i++) {
+                soma = soma + lista_carrinho[i].total;
+            }
+            let dados = {
+                data: data,
+                hora: hora,
+                total: soma,
+                id_comprador: localStorage.getItem("usuariologado")
+            };
+            $.ajax({
+                type: "POST",
+                url: "http://rem-rest-api.herokuapp.com/api/raissacompras",
+                data: JSON.stringify(dados),
+                success: function (data) {
+                    window.alert("Compra efetuada com sucesso!");
+                    localStorage.removeItem("listacarrinho");
+                    window.location.href = "./galeriadeprodutos.html";
+                }
+            });
+        });
+
+        function inserirCompra(compra) {
+            let container = $(".compras-anteriores");
+            let div = $("<div></div>");
+            div.addClass("col-md-4");
+            let p1 = $("<p></p>");
+            p1.append("<strong>Data: </strong>" + compra.data);
+            let p2 = $("<p></p>");
+            p2.append("<strong>Hora: </strong>" + compra.hora);
+            let p3 = $("<p></p>");
+            p3.append("<strong>Total: </strong>" + compra.total);
+
+            div.append(p1);
+            div.append(p2);
+            div.append(p3);
+
+            container.append(div);
+        }
+
+        function carregarComprasFeitas() {
+            $.ajax({
+                type: "GET",
+                url: "http://rem-rest-api.herokuapp.com/api/raissacompras",
+                success: function (data) {
+                    data = data.data;
+                    let id_atual = localStorage.getItem("usuariologado");
+                    console.log(data);
+                    for (let i = 0; i < data.length; i++) {
+                        console.log(data[i].id_comprador);
+                        if (data[i].id_comprador == id_atual) {
+                            inserirCompra(data[i]);
+                        }
+                    }
+                }
+            });
+        }
+        carregarComprasFeitas();
+
+        $(".voltar").click(function (e) {
+            e.preventDefault();
+            window.location.href = "./galeriadeprodutos.html";
+        });
+
+        $("#form-entrar-botao").click(function () {
+            if ($("#form-entrar-usuario").val() == "") {
+                window.alert("Preencha com seu usuário");
+            }
+            else if ($("#form-entrar-senha").val() == "") {
+                window.alert("Preencha com sua senha");
+            }
+            else {
+                console.log($("#form-entrar-usuario").val());
+                console.log($("#form-entrar-senha").val());
+            }
+        });
+
+        $("#form-cadastrar-botao").click(function () {
+            if ($("#form-cadastrar-usuario").val() == "") {
+                window.alert("Cadastre um usuário");
+            }
+            else if ($("#form-cadastrar-senha").val() == "") {
+                window.alert("Cadastre uma senha");
+            }
+            else {
+                console.log($("#form-cadastrar-usuario").val());
+                console.log($("#form-cadastrar-senha").val());
+            }
+        });
+
+
+
+
+    </script>
+
+</body>
+
+</html>
