@@ -56,7 +56,7 @@
 }
 
 #listagemAtiv tr td a:hover{ /* link muda de cor ao passar o mouse */
-	color: greenyellow;
+	color: rgb(255, 217, 1);
 }
 
 #idAtiv{ /*faz parte do bloco*/
