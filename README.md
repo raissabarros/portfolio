@@ -1,3 +1,3 @@
 # portfolio
 
-[![visits](https://github-visit-counter.herokuapp.com/{username}/{repo}/visits.svg)](#)
+[![visits](https://github-visit-counter.herokuapp.com/{raissabarros}/{portfolio}/visits.svg)](#)
